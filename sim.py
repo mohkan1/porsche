@@ -58,18 +58,18 @@ def main():
         # --------------
         
         # Show the most important events in the recording.  
-        print(client.show_recorder_file_info("~/tutorial/recorder/recording05.log",False))
+        print(client.show_recorder_file_info("data/recorder/recording05.log",False))
         # Show actors not moving 1 meter in 10 seconds.  
-        #print(client.show_recorder_actors_blocked("~/tutorial/recorder/recording04.log",10,1))
+        #print(client.show_recorder_actors_blocked("data/recorder/recording04.log",10,1))
         # Show collisions between any type of actor.  
-        #print(client.show_recorder_collisions("~/tutorial/recorder/recording04.log",'v','a'))
+        #print(client.show_recorder_collisions("data/recorder/recording04.log",'v','a'))
         
 
         # --------------
         # Reenact a fragment of the recording
         # --------------
         
-        client.replay_file("~/tutorial/recorder/recording03.log",0,30,0)
+        client.replay_file("data/recorder/recording03.log",0,30,0)
         
 
         # --------------
@@ -135,7 +135,7 @@ def main():
             cam_bp.set_attribute("image_size_y",str(1080))
             cam_bp.set_attribute("fov",str(105))
             ego_cam = world.spawn_actor(cam_bp,cam_transform,attach_to=ego_vehicle, attachment_type=carla.AttachmentType.Rigid)
-            ego_cam.listen(lambda image: image.save_to_disk('~/tutorial/new_rgb_output/%.6d.jpg' % image.frame))
+            ego_cam.listen(lambda image: image.save_to_disk('data/new_rgb_output/%.6d.jpg' % image.frame))
         
 
         # --------------
@@ -152,7 +152,7 @@ def main():
             depth_transform = carla.Transform(depth_location,depth_rotation)
             depth_cam = world.spawn_actor(depth_bp,depth_transform,attach_to=ego_vehicle, attachment_type=carla.AttachmentType.Rigid)
             # This time, a color converter is applied to the image, to get the semantic segmentation view
-            depth_cam.listen(lambda image: image.save_to_disk('~/tutorial/de_log/%.6d.jpg' % image.frame,carla.ColorConverter.LogarithmicDepth))
+            depth_cam.listen(lambda image: image.save_to_disk('data/de_log/%.6d.jpg' % image.frame,carla.ColorConverter.LogarithmicDepth))
         
         # --------------
         # Add a Depth camera to ego vehicle. 
@@ -168,7 +168,7 @@ def main():
             depth_transform02 = carla.Transform(depth_location02,depth_rotation02)
             depth_cam02 = world.spawn_actor(depth_bp02,depth_transform02,attach_to=ego_vehicle, attachment_type=carla.AttachmentType.Rigid)
             # This time, a color converter is applied to the image, to get the semantic segmentation view
-            depth_cam02.listen(lambda image: image.save_to_disk('~/tutorial/de/%.6d.jpg' % image.frame,carla.ColorConverter.Depth))
+            depth_cam02.listen(lambda image: image.save_to_disk('data/de/%.6d.jpg' % image.frame,carla.ColorConverter.Depth))
         
 
         # --------------
@@ -185,7 +185,7 @@ def main():
             sem_transform = carla.Transform(sem_location,sem_rotation)
             sem_cam = world.spawn_actor(sem_bp,sem_transform,attach_to=ego_vehicle, attachment_type=carla.AttachmentType.Rigid)
             # This time, a color converter is applied to the image, to get the semantic segmentation view
-            sem_cam.listen(lambda image: image.save_to_disk('~/tutorial/new_sem_output/%.6d.jpg' % image.frame,carla.ColorConverter.CityScapesPalette))
+            sem_cam.listen(lambda image: image.save_to_disk('data/new_sem_output/%.6d.jpg' % image.frame,carla.ColorConverter.CityScapesPalette))
         
 
         # --------------
@@ -246,7 +246,7 @@ def main():
             lidar_rotation = carla.Rotation(0,0,0)
             lidar_transform = carla.Transform(lidar_location,lidar_rotation)
             lidar_sen = world.spawn_actor(lidar_bp,lidar_transform,attach_to=ego_vehicle,attachment_type=carla.AttachmentType.Rigid)
-            lidar_sen.listen(lambda point_cloud: point_cloud.save_to_disk('~/tutorial/new_lidar_output/%.6d.ply' % point_cloud.frame))
+            lidar_sen.listen(lambda point_cloud: point_cloud.save_to_disk('data/new_lidar_output/%.6d.ply' % point_cloud.frame))
         
 
         # --------------
