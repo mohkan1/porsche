@@ -23,14 +23,14 @@ def main():
     client = carla.Client('127.0.0.1', 2000)
     client.set_timeout(10.0)
 
-    enable_rgb_camera = 1
-    enable_logarithmic_depth = 1
-    enable_depth_camera = 1
-    enable_semantic_segmentation = 1
+    enable_rgb_camera = 0
+    enable_logarithmic_depth = 0
+    enable_depth_camera = 0
+    enable_semantic_segmentation = 0
     enable_radar = 0
-    enable_lidar = 1
-    enable_imu = 1
-    enable_gnss = 1
+    enable_lidar = 0
+    enable_imu = 0
+    enable_gnss = 0
     enable_collision = 0
     enable_lane_invasion = 0
     enable_obstacle_sensor = 0
